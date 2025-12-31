@@ -46,21 +46,21 @@
 
     .card h2 {
       font-size: 16px;
-      margin: 0 0 4px;
+      margin: 0 0 6px;
     }
 
     .card p {
       font-size: 14px;
       margin: 0 0 14px;
       color: #555;
+      line-height: 1.5;
     }
 
-    /* 🔧 BUTTON FIX */
     .primary-btn {
       display: block;
       width: 100%;
-      max-width: 260px;        /* shorter width */
-      margin: 8px auto 0;     /* move button UP */
+      max-width: 260px;
+      margin: 8px auto 0;
       padding: 13px 16px;
       font-size: 15px;
       font-weight: 600;
@@ -72,13 +72,16 @@
       box-sizing: border-box;
     }
 
-    /* 🔧 HELPER SPACING */
     .helper {
-      margin-top: 22px;       /* balanced spacing below button */
+      margin-top: 22px;
       font-size: 12px;
       color: #666;
       text-align: center;
       line-height: 1.5;
+    }
+
+    .hidden {
+      display: none;
     }
 
     @media (max-width: 360px) {
@@ -100,26 +103,66 @@
     />
 
     <h1>Syq Studio Booking</h1>
-    <div class="subtitle">
-      You are now in a normal browser. Please continue to booking.
+
+    <!-- INSTAGRAM VIEW -->
+    <div id="instagramView" class="hidden">
+      <div class="subtitle">
+        To avoid issues with Instagram in-app browser, please open the booking link in your external browser.
+      </div>
+
+      <div class="card">
+        <h2>Instagram Browser Detected</h2>
+        <p>
+          Instagram uses a built-in browser that may cause errors when making bookings.
+        </p>
+
+        <p>
+          <strong>Please follow these steps:</strong><br>
+          1. Tap the ⋯ (three dots) at the top right<br>
+          2. Select <strong>Open in external browser</strong><br>
+          3. Complete your booking in your browser
+        </p>
+
+        <div class="helper">
+          Having trouble?<br>
+          Copy this link and open it directly in your browser:<br>
+          <strong>https://shorturl.at/5wpBL</strong><br><br>
+          Or WhatsApp admin at <strong>0122911175</strong>
+        </div>
+      </div>
     </div>
 
-    <div class="card">
-      <h2>Continue Booking</h2>
-      <p>Tap the button below to proceed.</p>
+    <!-- NORMAL BROWSER VIEW -->
+    <div id="normalView" class="hidden">
+      <div class="subtitle">
+        You are now in a normal browser. Please continue to booking.
+      </div>
 
-      <button class="primary-btn" onclick="goToBooking()">
-        Continue to Booking
-      </button>
+      <div class="card">
+        <h2>Continue Booking</h2>
+        <p>Tap the button below to proceed.</p>
 
-      <div class="helper">
-        If the booking page does not load correctly, try opening it in a private or incognito tab.
+        <button class="primary-btn" onclick="goToBooking()">
+          Continue to Booking
+        </button>
+
+        <div class="helper">
+          If the booking page does not load correctly, try opening it in a private or incognito tab.
+        </div>
       </div>
     </div>
 
   </div>
 
   <script>
+    const isInstagram = /Instagram/i.test(navigator.userAgent);
+
+    if (isInstagram) {
+      document.getElementById("instagramView").classList.remove("hidden");
+    } else {
+      document.getElementById("normalView").classList.remove("hidden");
+    }
+
     function goToBooking() {
       window.location.href =
         "https://script.google.com/macros/s/AKfycbxTU9VC36rUMrQAt3wvAEyxZIKs61g_zCTEWOZTfHZ7DT43Kvhx93EGeLjhvW4YW8Vl/exec";
