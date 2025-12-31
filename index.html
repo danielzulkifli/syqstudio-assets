@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Syq Studio Booking</title>
+
   <style>
-    :root { --max: 420px; }
     body {
       font-family: Arial, sans-serif;
       background: #ffffff;
@@ -13,144 +13,126 @@
       padding: 24px 16px;
       color: #111;
     }
-    .wrap {
-      max-width: var(--max);
+
+    .container {
+      max-width: 420px;
       margin: 0 auto;
       text-align: center;
     }
+
     .logo {
-      width: 120px;
-      height: auto;
-      margin: 8px auto 18px;
       display: block;
+      margin: 8px auto 16px;
+      max-width: 160px;
+      height: auto;
     }
+
     h1 {
       font-size: 24px;
-      margin: 0 0 10px;
-      font-weight: 700;
+      margin-bottom: 12px;
     }
+
     p {
-      margin: 0 0 14px;
-      line-height: 1.45;
-      color: #333;
       font-size: 14px;
+      line-height: 1.5;
+      color: #333;
+      margin-bottom: 14px;
     }
-    .card {
-      border: 1px solid #e6e6e6;
+
+    .box {
+      border: 1px solid #e5e5e5;
       border-radius: 10px;
       padding: 16px;
       margin-top: 16px;
-      background: #fafafa;
       text-align: left;
+      background: #fafafa;
     }
-    .btn {
-      width: 100%;
-      display: inline-block;
-      padding: 12px 14px;
-      border-radius: 8px;
-      background: #000;
-      color: #fff;
-      text-decoration: none;
-      font-weight: 700;
-      border: 0;
-      cursor: pointer;
-      margin-top: 14px;
-      font-size: 15px;
+
+    .box-title {
+      font-weight: bold;
+      margin-bottom: 8px;
     }
-    .btn.secondary {
-      background: #1db954;
-      margin-top: 10px;
-    }
-    .hint {
-      font-size: 12px;
-      color: #666;
-      margin-top: 10px;
-    }
-    .steps {
-      margin: 10px 0 0;
+
+    ol {
       padding-left: 18px;
+      margin: 8px 0 0;
       font-size: 14px;
-      color: #222;
     }
-    .steps li { margin: 6px 0; }
-    .small {
-      font-size: 12px;
-      color: #666;
-      margin-top: 12px;
+
+    ol li {
+      margin-bottom: 6px;
     }
-    .mono {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-size: 12px;
-      word-break: break-all;
-      color: #444;
-      background: #fff;
-      border: 1px solid #eee;
-      padding: 10px;
-      border-radius: 8px;
+
+    .link-box {
       margin-top: 10px;
+      padding: 10px;
+      background: #ffffff;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 13px;
+      word-break: break-all;
+    }
+
+    .footer-note {
+      margin-top: 12px;
+      font-size: 13px;
+      color: #555;
     }
   </style>
 </head>
+
 <body>
-  <div class="wrap">
-    <img class="logo" src="https://danielzulkifli.github.io/syqstudio-assets/logo.png" alt="Syq Studio" />
+  <div class="container">
+
+    <!-- Logo -->
+    <img
+      src="https://danielzulkifli.github.io/syqstudio-assets/logo.png"
+      alt="Syq Studio"
+      class="logo"
+    />
+
+    <!-- Title -->
     <h1>Syq Studio Booking</h1>
-    <p>To avoid issues with Instagram in-app browser, please open booking in your browser.</p>
 
-    <div id="igCard" class="card" style="display:none;">
-      <p><b>Instagram Browser Detected</b></p>
-      <p>Please open this page in your browser:</p>
-      <ol class="steps">
-        <li>Tap the <b>⋯</b> menu (top right)</li>
-        <li>Tap <b>Open in Browser</b></li>
+    <!-- Intro -->
+    <p>
+      To avoid issues with Instagram’s in-app browser, please open the booking
+      link in your external browser for the best experience.
+    </p>
+
+    <!-- Instagram Instruction Box -->
+    <div class="box">
+      <div class="box-title">Instagram Browser Detected</div>
+      <p>
+        Instagram uses a built-in browser that may cause errors during the
+        booking process.
+      </p>
+
+      <p><strong>Please follow the steps below:</strong></p>
+      <ol>
+        <li>Tap the <strong>⋯ (three dots)</strong> at the top right</li>
+        <li>Select <strong>Open in external browser</strong></li>
+        <li>Complete your booking in your browser</li>
       </ol>
-      <button class="btn" id="openBookingBtn">Open Booking</button>
-      <div class="hint">If the button does nothing, use the menu (⋯) and select “Open in Browser”.</div>
     </div>
 
-    <div id="normalCard" class="card" style="display:none;">
-      <p><b>Ready</b></p>
-      <p>Tap below to continue to booking.</p>
-      <a class="btn" id="bookingLink" href="#" rel="noopener">Continue to Booking</a>
-      <div class="small">If you face login/account issues in Chrome, try Safari or open in Private/Incognito.</div>
+    <!-- Backup Option -->
+    <div class="box">
+      <div class="box-title">Having trouble?</div>
+      <p>
+        Copy the link below and open it directly in your browser:
+      </p>
+
+      <div class="link-box">
+        https://shorturl.at/5wpBL
+      </div>
+
+      <p class="footer-note">
+        If you still face issues, you may contact our admin on WhatsApp:
+        <strong>0122911175</strong>
+      </p>
     </div>
 
-    <div class="small">Booking URL:</div>
-    <div class="mono" id="urlBox"></div>
   </div>
-
-  <script>
-    // IMPORTANT: Put your Apps Script Web App URL here (your /exec URL)
-    const BOOKING_URL = "https://script.google.com/macros/s/AKfycbxTU9VC36rUMrQAt3wvAEyxZIKs61g_zCTEWOZTfHZ7DT43Kvhx93EGeLjhvW4YW8Vl/exec";
-
-    const ua = navigator.userAgent || "";
-    const isInstagram = /Instagram/i.test(ua);
-
-    document.getElementById("urlBox").textContent = BOOKING_URL;
-
-    const igCard = document.getElementById("igCard");
-    const normalCard = document.getElementById("normalCard");
-    const bookingLink = document.getElementById("bookingLink");
-    const openBookingBtn = document.getElementById("openBookingBtn");
-
-    // Always set link targets
-    bookingLink.href = BOOKING_URL;
-
-    // Use _blank to encourage external browser opening where possible
-    bookingLink.target = "_blank";
-
-    openBookingBtn.addEventListener("click", () => {
-      // Try open new tab/window (some in-app browsers may block)
-      window.open(BOOKING_URL, "_blank");
-      // Fallback: navigate current view
-      setTimeout(() => { window.location.href = BOOKING_URL; }, 400);
-    });
-
-    if (isInstagram) {
-      igCard.style.display = "block";
-    } else {
-      normalCard.style.display = "block";
-    }
-  </script>
 </body>
 </html>
