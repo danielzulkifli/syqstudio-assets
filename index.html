@@ -1,17 +1,17 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Syq Studio Booking</title>
 
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background: #ffffff;
       margin: 0;
       padding: 24px 16px;
-      color: #111;
+      color: #000;
     }
 
     .container {
@@ -21,85 +21,72 @@
     }
 
     .logo {
+      width: 64px;
+      margin: 16px auto 24px;
       display: block;
-      margin: 8px auto 16px;
-      max-width: 160px;
-      height: auto;
     }
 
     h1 {
-      font-size: 24px;
-      margin: 0 0 12px;
-    }
-
-    p {
-      font-size: 14px;
-      line-height: 1.5;
-      color: #333;
-      margin: 0 0 14px;
-    }
-
-    .box {
-      border: 1px solid #e5e5e5;
-      border-radius: 10px;
-      padding: 16px;
-      margin-top: 16px;
-      text-align: left;
-      background: #fafafa;
-    }
-
-    .box-title {
-      font-weight: bold;
+      font-size: 22px;
       margin-bottom: 8px;
     }
 
-    ol {
-      padding-left: 18px;
-      margin: 8px 0 0;
+    .subtitle {
       font-size: 14px;
+      color: #555;
+      margin-bottom: 24px;
     }
 
-    ol li {
-      margin-bottom: 6px;
+    .card {
+      border: 1px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 20px 16px;
+      text-align: left;
     }
 
-    .link-box {
-      margin-top: 10px;
-      padding: 10px;
-      background: #ffffff;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      font-size: 13px;
-      word-break: break-all;
+    .card h2 {
+      font-size: 16px;
+      margin: 0 0 4px;
     }
 
-    .footer-note {
-      margin-top: 12px;
-      font-size: 13px;
+    .card p {
+      font-size: 14px;
+      margin: 0 0 16px;
       color: #555;
     }
 
-    .btn {
+    .primary-btn {
       width: 100%;
-      display: inline-block;
-      padding: 12px 14px;
-      border-radius: 8px;
+      max-width: 320px;
+      margin: 0 auto;
+      display: block;
+      padding: 14px 18px;
+      font-size: 16px;
+      font-weight: 600;
+      text-align: center;
       background: #000;
       color: #fff;
-      text-decoration: none;
-      font-weight: 700;
-      border: 0;
+      border: none;
+      border-radius: 8px;
       cursor: pointer;
-      margin-top: 12px;
-      font-size: 15px;
-      text-align: center;
+      box-sizing: border-box;
     }
 
-    .muted {
+    /* 👇 THIS IS THE SPACING FIX */
+    .helper {
+      margin-top: 18px;     /* pushes it lower */
+      padding-top: 2px;
       font-size: 12px;
-      color: #777;
-      margin-top: 10px;
-      text-align: left;
+      color: #666;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 360px) {
+      .primary-btn {
+        font-size: 15px;
+        padding: 12px 16px;
+      }
     }
   </style>
 </head>
@@ -107,97 +94,37 @@
 <body>
   <div class="container">
 
+    <!-- Logo -->
     <img
       src="https://danielzulkifli.github.io/syqstudio-assets/logo.png"
-      alt="Syq Studio"
+      alt="Syq Studio Logo"
       class="logo"
     />
 
     <h1>Syq Studio Booking</h1>
-
-    <!-- IG content -->
-    <div id="igView" style="display:none;">
-      <p>
-        To avoid issues with Instagram’s in-app browser, please open the booking
-        link in your external browser for the best experience.
-      </p>
-
-      <div class="box">
-        <div class="box-title">Instagram Browser Detected</div>
-        <p>
-          Instagram uses a built-in browser that may cause errors during the
-          booking process.
-        </p>
-
-        <p><strong>Please follow the steps below:</strong></p>
-        <ol>
-          <li>Tap the <strong>⋯ (three dots)</strong> at the top right</li>
-          <li>Select <strong>Open in external browser</strong></li>
-          <li>Complete your booking in your browser</li>
-        </ol>
-      </div>
-
-      <div class="box">
-        <div class="box-title">Having trouble?</div>
-        <p>Copy the link below and open it directly in your browser:</p>
-        <div class="link-box" id="shortLinkBox"></div>
-
-        <p class="footer-note">
-          If you still face issues, you may contact our admin on WhatsApp:
-          <strong>0122911175</strong>
-        </p>
-      </div>
+    <div class="subtitle">
+      You are now in a normal browser. Please continue to booking.
     </div>
 
-    <!-- Normal browser content -->
-    <div id="normalView" style="display:none;">
-      <p>
-        You are now in a normal browser. Please continue to booking.
-      </p>
+    <div class="card">
+      <h2>Continue Booking</h2>
+      <p>Tap the button below to proceed.</p>
 
-      <div class="box">
-        <div class="box-title">Continue Booking</div>
-        <p>
-          Tap the button below to proceed.
-        </p>
+      <button class="primary-btn" onclick="goToBooking()">
+        Continue to Booking
+      </button>
 
-        <a class="btn" id="continueBtn" href="#" rel="noopener">Continue to Booking</a>
-
-        <div class="muted">
-          If the booking page does not load correctly, try opening it in a private or incognito tab.
-        </div>
+      <div class="helper">
+        If the booking page does not load correctly, try opening it in a private or incognito tab.
       </div>
     </div>
 
   </div>
 
   <script>
-    // Your published short link
-    const SHORT_LINK = "https://shorturl.at/5wpBL";
-
-    // Detect Instagram / Facebook in-app browsers via UA signatures
-    function isInAppSocialBrowser() {
-      const ua = navigator.userAgent || "";
-      const isInstagram = /Instagram/i.test(ua);
-      const isFacebook = /FBAN|FBAV/i.test(ua);
-      return isInstagram || isFacebook;
-    }
-
-    // Render correct view
-    const igView = document.getElementById("igView");
-    const normalView = document.getElementById("normalView");
-    const shortLinkBox = document.getElementById("shortLinkBox");
-    const continueBtn = document.getElementById("continueBtn");
-
-    shortLinkBox.textContent = SHORT_LINK;
-    continueBtn.href = SHORT_LINK;
-
-    if (isInAppSocialBrowser()) {
-      igView.style.display = "block";
-      normalView.style.display = "none";
-    } else {
-      igView.style.display = "none";
-      normalView.style.display = "block";
+    function goToBooking() {
+      window.location.href =
+        "https://script.google.com/macros/s/AKfycbxTU9VC36rUMrQAt3wvAEyxZIKs61g_zCTEWOZTfHZ7DT43Kvhx93EGeLjhvW4YW8Vl/exec";
     }
   </script>
 </body>
